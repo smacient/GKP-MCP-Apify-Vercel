@@ -201,7 +201,7 @@ export default function GkpAuthClient() {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: 1rem;
+          padding: 1rem 1rem 0 1rem;
         }
 
         .landing-text {
@@ -212,7 +212,6 @@ export default function GkpAuthClient() {
           opacity: ${showApifyStep ? '0' : '1'};
           transform: ${showApifyStep ? 'translateY(-20px)' : 'translateY(0)'};
           height: ${showApifyStep ? '0' : 'auto'};
-          margin: ${showApifyStep ? '0' : '0 0 2rem 0'};
           overflow: hidden;
           pointer-events: ${showApifyStep ? 'none' : 'auto'};
         }
@@ -265,6 +264,7 @@ export default function GkpAuthClient() {
           border: 1px solid rgba(255, 255, 255, 0.2);
           position: relative;
           overflow: hidden;
+          margin-bottom: 1rem;
         }
 
         .main-container::before {
@@ -281,10 +281,6 @@ export default function GkpAuthClient() {
           text-align: center;
           padding: 2rem 2rem 1rem 2rem;
           border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-        }
-
-        .header-icon {
-          margin-bottom: 1rem;
         }
 
         .header h1 {
@@ -308,6 +304,10 @@ export default function GkpAuthClient() {
 
         .step-container {
           padding: 1.5rem 2rem 2rem 2rem;
+          min-height: 200px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
         }
 
         .google-btn {
@@ -370,6 +370,8 @@ export default function GkpAuthClient() {
           flex-direction: column;
           align-items: center;
           gap: 16px;
+          min-height: 120px;
+          justify-content: center;
         }
 
         .spinner {
@@ -572,8 +574,9 @@ export default function GkpAuthClient() {
         }
 
         .debug-info {
-          margin-top: 2rem;
+          margin-top: 1rem;
           font-size: 12px;
+          margin-bottom: 1rem;
         }
 
         .debug-content {
@@ -594,7 +597,7 @@ export default function GkpAuthClient() {
           }
           
           .main-container {
-            margin: 0.5rem;
+            margin: 0 0.5rem 1rem 0.5rem;
           }
           
           .header {
@@ -625,35 +628,51 @@ export default function GkpAuthClient() {
 
         <main className="main-container">
           <div className="header">
-            <div className="header-icon">
-              {/* Professional Keyword Analytics Icon */}
-              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div style={{ marginBottom: '1rem' }}>
+              {/* Professional Security Shield SVG */}
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                  <linearGradient id="keywordGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style={{stopColor:"#0045a0"}}/>
                     <stop offset="100%" style={{stopColor:"#54d348"}}/>
                   </linearGradient>
-                  <filter id="glow">
-                    <feDropShadow dx="0" dy="0" stdDeviation="3" floodColor="#0045a0" floodOpacity="0.3"/>
+                  <filter id="shieldGlow">
+                    <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#0045a0" floodOpacity="0.3"/>
                   </filter>
                 </defs>
                 
-                {/* Outer search ring */}
-                <circle cx="24" cy="24" r="16" stroke="url(#keywordGradient)" strokeWidth="3" fill="none" filter="url(#glow)"/>
+                {/* Shield body */}
+                <path 
+                  d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z" 
+                  fill="url(#shieldGradient)" 
+                  stroke="rgba(255,255,255,0.2)" 
+                  strokeWidth="0.5"
+                  filter="url(#shieldGlow)"
+                />
                 
-                {/* Inner target circles */}
-                <circle cx="24" cy="24" r="10" stroke="url(#keywordGradient)" strokeWidth="2" fill="rgba(0, 69, 160, 0.1)"/>
-                <circle cx="24" cy="24" r="5" fill="url(#keywordGradient)"/>
+                {/* Inner shield highlight */}
+                <path 
+                  d="M12 3.5L4.5 7V12C4.5 16.8 7.8 21.2 12 22.5C16.2 21.2 19.5 16.8 19.5 12V7L12 3.5Z" 
+                  fill="none" 
+                  stroke="rgba(255,255,255,0.3)" 
+                  strokeWidth="1"
+                />
                 
-                {/* Search handle */}
-                <path d="36 36L44 44" stroke="url(#keywordGradient)" strokeWidth="4" strokeLinecap="round" filter="url(#glow)"/>
+                {/* Checkmark */}
+                <path 
+                  d="M9 12L11 14L15 10" 
+                  stroke="white" 
+                  strokeWidth="2.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  filter="url(#shieldGlow)"
+                />
                 
-                {/* Keyword indicators - small dots around the circle */}
-                <circle cx="24" cy="12" r="2" fill="#54d348" opacity="0.8"/>
-                <circle cx="32" cy="16" r="2" fill="#54d348" opacity="0.6"/>
-                <circle cx="32" cy="32" r="2" fill="#54d348" opacity="0.8"/>
-                <circle cx="16" cy="32" r="2" fill="#54d348" opacity="0.6"/>
-                <circle cx="16" cy="16" r="2" fill="#54d348" opacity="0.7"/>
+                {/* Security dots around shield */}
+                <circle cx="7" cy="9" r="1" fill="rgba(255,255,255,0.6)"/>
+                <circle cx="17" cy="9" r="1" fill="rgba(255,255,255,0.6)"/>
+                <circle cx="7" cy="15" r="1" fill="rgba(255,255,255,0.6)"/>
+                <circle cx="17" cy="15" r="1" fill="rgba(255,255,255,0.6)"/>
               </svg>
             </div>
             <h1>Connect Your Accounts</h1>
