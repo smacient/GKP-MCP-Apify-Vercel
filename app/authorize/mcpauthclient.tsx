@@ -172,10 +172,30 @@ export default function GkpAuthClient() {
 
   return (
     <>
+      <style jsx global>{`
+        /* Apply gradient to full page background */
+        html, body {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+          width: 100%;
+          background: linear-gradient(to right, #0045a0 0%, #54d348 100%);
+          background-attachment: fixed;
+          background-repeat: no-repeat;
+          overflow-x: hidden;
+        }
+        
+        #__next {
+          height: 100%;
+          min-height: 100vh;
+          background: transparent;
+        }
+      `}</style>
+
       <style jsx>{`
         .container {
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-          background: linear-gradient(to right, #0045a0 0%, #54d348 100%);
+          background: transparent;
           min-height: 100vh;
           display: flex;
           flex-direction: column;
@@ -557,13 +577,15 @@ export default function GkpAuthClient() {
         }
 
         .debug-content {
-          background: #f5f5f5;
+          background: rgba(0, 0, 0, 0.1);
+          color: white;
           padding: 10px;
           margin-top: 5px;
           border-radius: 4px;
           max-height: 200px;
           overflow: auto;
           font-family: monospace;
+          backdrop-filter: blur(10px);
         }
 
         @media (max-width: 480px) {
@@ -762,7 +784,7 @@ export default function GkpAuthClient() {
         {/* Debug info - only show in development */}
         {process.env.NODE_ENV === 'development' && (
           <details className="debug-info">
-            <summary style={{ cursor: 'pointer', color: '#666' }}>Debug Info</summary>
+            <summary style={{ cursor: 'pointer', color: 'rgba(255,255,255,0.8)' }}>Debug Info</summary>
             <div className="debug-content">
               {debugInfo.map((info, i) => (
                 <div key={i}>{info}</div>
