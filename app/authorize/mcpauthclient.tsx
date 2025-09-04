@@ -620,7 +620,7 @@ export default function GkpAuthClient() {
           <div className="feature-badges">
             <div className="badge">🔒 Secure OAuth2</div>
             <div className="badge">🔍 Keyword Planner</div>
-            <div className="badge">🕷️ Apify Integration</div>
+            <div className="badge">🔗 Apify Integration</div>
           </div>
         </div>
 
