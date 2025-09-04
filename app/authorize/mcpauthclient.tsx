@@ -173,7 +173,6 @@ export default function GkpAuthClient() {
   return (
     <>
       <style jsx global>{`
-        /* Apply gradient to full page background */
         html, body {
           margin: 0;
           padding: 0;
@@ -187,7 +186,6 @@ export default function GkpAuthClient() {
         
         #__next {
           height: 100%;
-          min-height: 100vh;
           background: transparent;
         }
       `}</style>
@@ -197,74 +195,72 @@ export default function GkpAuthClient() {
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
           background: transparent;
           min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 1rem 1rem 0 1rem;
+          padding: 1.5rem 1rem 1rem 1rem;
         }
 
         .landing-text {
           text-align: center;
-          margin-bottom: 2rem;
           max-width: 600px;
+          margin: 0 auto 1.5rem auto;
           transition: all 0.3s ease;
           opacity: ${showApifyStep ? '0' : '1'};
-          transform: ${showApifyStep ? 'translateY(-20px)' : 'translateY(0)'};
+          transform: ${showApifyStep ? 'translateY(-10px)' : 'translateY(0)'};
           height: ${showApifyStep ? '0' : 'auto'};
           overflow: hidden;
           pointer-events: ${showApifyStep ? 'none' : 'auto'};
         }
 
         .landing-text h1 {
-          font-size: 2.5rem;
+          font-size: 2.2rem;
           font-weight: 800;
           color: white;
-          margin-bottom: 1rem;
+          margin: 0 0 0.8rem 0;
           letter-spacing: -0.02em;
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          line-height: 1.2;
         }
 
         .landing-text p {
-          font-size: 1.1rem;
+          font-size: 1rem;
           color: rgba(255, 255, 255, 0.9);
-          line-height: 1.6;
+          line-height: 1.5;
           text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          margin: 0 0 1rem 0;
         }
 
         .feature-badges {
           display: flex;
-          gap: 1rem;
+          gap: 0.8rem;
           justify-content: center;
-          margin-top: 1.5rem;
           flex-wrap: wrap;
+          margin: 0;
         }
 
         .badge {
           background: rgba(255, 255, 255, 0.2);
           backdrop-filter: blur(10px);
-          padding: 0.5rem 1rem;
-          border-radius: 20px;
+          padding: 0.4rem 0.8rem;
+          border-radius: 16px;
           color: white;
-          font-size: 0.9rem;
+          font-size: 0.85rem;
           font-weight: 500;
           border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .main-container {
           width: 100%;
-          max-width: 480px;
+          max-width: 460px;
+          margin: 0 auto;
           background: rgba(255, 255, 255, 0.95);
           backdrop-filter: blur(20px);
-          border-radius: 20px;
+          border-radius: 16px;
           box-shadow: 
-            0 20px 40px rgba(0, 0, 0, 0.1),
+            0 15px 35px rgba(0, 0, 0, 0.1),
             0 1px 3px rgba(0, 0, 0, 0.05),
             inset 0 1px 0 rgba(255, 255, 255, 0.4);
           border: 1px solid rgba(255, 255, 255, 0.2);
           position: relative;
           overflow: hidden;
-          margin-bottom: 1rem;
         }
 
         .main-container::before {
@@ -279,55 +275,51 @@ export default function GkpAuthClient() {
 
         .header {
           text-align: center;
-          padding: 2rem 2rem 1rem 2rem;
+          padding: 1.5rem 1.5rem 0.8rem 1.5rem;
           border-bottom: 1px solid rgba(148, 163, 184, 0.1);
         }
 
         .header h1 {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
           font-weight: 700;
           background: linear-gradient(135deg, #0045a0, #54d348);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
-          margin-bottom: 0.5rem;
+          margin: 0.5rem 0 0.3rem 0;
           letter-spacing: -0.02em;
         }
 
         .header p {
           color: #64748b;
-          font-size: 0.95rem;
+          font-size: 0.9rem;
           font-weight: 400;
-          line-height: 1.4;
+          line-height: 1.3;
           margin: 0;
         }
 
         .step-container {
-          padding: 1.5rem 2rem 2rem 2rem;
-          min-height: 200px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
+          padding: 1.2rem 1.5rem 1.5rem 1.5rem;
         }
 
         .google-btn {
           width: 100%;
-          max-width: 320px;
+          max-width: 300px;
           margin: 0 auto;
-          padding: 16px 24px;
+          padding: 14px 20px;
           background: linear-gradient(135deg, #4285f4, #34a853);
           color: white;
           border: none;
-          border-radius: 16px;
-          font-size: 16px;
+          border-radius: 12px;
+          font-size: 15px;
           font-weight: 600;
           cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 12px;
+          gap: 10px;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+          box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
           position: relative;
           overflow: hidden;
         }
@@ -348,8 +340,8 @@ export default function GkpAuthClient() {
         }
 
         .google-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(66, 133, 244, 0.4);
+          transform: translateY(-1px);
+          box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
         }
 
         .google-btn:active {
@@ -357,11 +349,11 @@ export default function GkpAuthClient() {
         }
 
         .helper-text {
-          font-size: 13px;
+          font-size: 12px;
           color: #64748b;
           text-align: center;
-          margin-top: 12px;
-          line-height: 1.4;
+          margin-top: 8px;
+          line-height: 1.3;
         }
 
         .loading-state {
@@ -369,16 +361,15 @@ export default function GkpAuthClient() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 16px;
-          min-height: 120px;
-          justify-content: center;
+          gap: 12px;
+          padding: 1rem 0;
         }
 
         .spinner {
-          width: 32px;
-          height: 32px;
-          border: 3px solid rgba(66, 133, 244, 0.1);
-          border-top: 3px solid #4285f4;
+          width: 28px;
+          height: 28px;
+          border: 2px solid rgba(66, 133, 244, 0.1);
+          border-top: 2px solid #4285f4;
           border-radius: 50%;
           animation: spin 1s linear infinite;
         }
@@ -391,20 +382,20 @@ export default function GkpAuthClient() {
         .success-box {
           background: linear-gradient(135deg, rgba(52, 199, 89, 0.1), rgba(66, 133, 244, 0.1));
           border: 1px solid rgba(52, 199, 89, 0.2);
-          padding: 16px;
-          border-radius: 12px;
-          margin-bottom: 20px;
+          padding: 12px;
+          border-radius: 10px;
+          margin-bottom: 16px;
         }
 
         .success-indicator {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
         }
 
         .success-icon {
-          width: 28px;
-          height: 28px;
+          width: 24px;
+          height: 24px;
           border-radius: 50%;
           background: linear-gradient(135deg, #34c759, #30d158);
           display: flex;
@@ -416,7 +407,7 @@ export default function GkpAuthClient() {
         .success-text {
           color: #1e293b;
           font-weight: 600;
-          font-size: 14px;
+          font-size: 13px;
         }
 
         .user-email {
@@ -425,23 +416,23 @@ export default function GkpAuthClient() {
         }
 
         .form-group {
-          margin-bottom: 20px;
+          margin-bottom: 16px;
         }
 
         .form-label {
           display: block;
-          margin-bottom: 6px;
+          margin-bottom: 5px;
           font-weight: 600;
           color: #1e293b;
-          font-size: 14px;
+          font-size: 13px;
         }
 
         .input-field {
           width: 100%;
-          padding: 14px 16px;
-          font-size: 15px;
+          padding: 12px 14px;
+          font-size: 14px;
           border: 2px solid rgba(148, 163, 184, 0.2);
-          border-radius: 10px;
+          border-radius: 8px;
           outline: none;
           transition: all 0.3s ease;
           background: rgba(255, 255, 255, 0.7);
@@ -452,7 +443,7 @@ export default function GkpAuthClient() {
         .input-field:focus {
           border-color: #4285f4;
           background: rgba(255, 255, 255, 0.9);
-          box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.1);
+          box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.1);
         }
 
         .input-field::placeholder {
@@ -465,24 +456,24 @@ export default function GkpAuthClient() {
         }
 
         .input-helper {
-          font-size: 12px;
+          font-size: 11px;
           color: #64748b;
-          margin-top: 6px;
-          line-height: 1.4;
+          margin-top: 4px;
+          line-height: 1.3;
         }
 
         .primary-btn {
           width: 100%;
-          padding: 14px 24px;
+          padding: 12px 20px;
           background: linear-gradient(135deg, #0045a0, #54d348);
           color: white;
           border: none;
-          border-radius: 10px;
-          font-size: 15px;
+          border-radius: 8px;
+          font-size: 14px;
           font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(0, 69, 160, 0.3);
+          box-shadow: 0 3px 12px rgba(0, 69, 160, 0.3);
           position: relative;
           overflow: hidden;
         }
@@ -503,8 +494,8 @@ export default function GkpAuthClient() {
         }
 
         .primary-btn:hover:not(:disabled) {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(0, 69, 160, 0.4);
+          transform: translateY(-1px);
+          box-shadow: 0 5px 18px rgba(0, 69, 160, 0.4);
         }
 
         .primary-btn:disabled {
@@ -520,14 +511,14 @@ export default function GkpAuthClient() {
 
         .secondary-btn {
           width: 100%;
-          padding: 10px 20px;
+          padding: 8px 16px;
           background: transparent;
           color: #64748b;
           border: none;
-          border-radius: 8px;
-          font-size: 13px;
+          border-radius: 6px;
+          font-size: 12px;
           cursor: pointer;
-          margin-top: 10px;
+          margin-top: 8px;
           transition: all 0.3s ease;
         }
 
@@ -545,11 +536,11 @@ export default function GkpAuthClient() {
           color: #dc2626;
           background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(239, 68, 68, 0.1));
           border: 1px solid rgba(220, 38, 38, 0.2);
-          padding: 14px 16px;
-          border-radius: 10px;
-          margin-top: 16px;
-          font-size: 13px;
-          line-height: 1.5;
+          padding: 12px 14px;
+          border-radius: 8px;
+          margin-top: 12px;
+          font-size: 12px;
+          line-height: 1.4;
           backdrop-filter: blur(10px);
         }
 
@@ -561,12 +552,12 @@ export default function GkpAuthClient() {
         .btn-loading::after {
           content: '';
           position: absolute;
-          width: 18px;
-          height: 18px;
+          width: 16px;
+          height: 16px;
           top: 50%;
           left: 50%;
-          margin-left: -9px;
-          margin-top: -9px;
+          margin-left: -8px;
+          margin-top: -8px;
           border: 2px solid transparent;
           border-top: 2px solid white;
           border-radius: 50%;
@@ -575,37 +566,44 @@ export default function GkpAuthClient() {
 
         .debug-info {
           margin-top: 1rem;
-          font-size: 12px;
-          margin-bottom: 1rem;
+          font-size: 11px;
         }
 
         .debug-content {
           background: rgba(0, 0, 0, 0.1);
           color: white;
-          padding: 10px;
-          margin-top: 5px;
+          padding: 8px;
+          margin-top: 4px;
           border-radius: 4px;
-          max-height: 200px;
+          max-height: 150px;
           overflow: auto;
           font-family: monospace;
           backdrop-filter: blur(10px);
         }
 
         @media (max-width: 480px) {
+          .container {
+            padding: 1rem 0.8rem 0.8rem 0.8rem;
+          }
+          
           .landing-text h1 {
-            font-size: 2rem;
+            font-size: 1.9rem;
+          }
+          
+          .landing-text p {
+            font-size: 0.95rem;
           }
           
           .main-container {
-            margin: 0 0.5rem 1rem 0.5rem;
+            margin: 0;
           }
           
           .header {
-            padding: 1.5rem 1.5rem 1rem 1.5rem;
+            padding: 1.2rem 1.2rem 0.6rem 1.2rem;
           }
           
           .step-container {
-            padding: 1rem 1.5rem 1.5rem 1.5rem;
+            padding: 1rem 1.2rem 1.2rem 1.2rem;
           }
         }
       `}</style>
@@ -628,51 +626,28 @@ export default function GkpAuthClient() {
 
         <main className="main-container">
           <div className="header">
-            <div style={{ marginBottom: '1rem' }}>
-              {/* Professional Security Shield SVG */}
-              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div style={{ marginBottom: '0.5rem' }}>
+              {/* Compact Security Shield SVG */}
+              <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style={{stopColor:"#0045a0"}}/>
                     <stop offset="100%" style={{stopColor:"#54d348"}}/>
                   </linearGradient>
-                  <filter id="shieldGlow">
-                    <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#0045a0" floodOpacity="0.3"/>
-                  </filter>
                 </defs>
-                
-                {/* Shield body */}
                 <path 
                   d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z" 
                   fill="url(#shieldGradient)" 
-                  stroke="rgba(255,255,255,0.2)" 
-                  strokeWidth="0.5"
-                  filter="url(#shieldGlow)"
-                />
-                
-                {/* Inner shield highlight */}
-                <path 
-                  d="M12 3.5L4.5 7V12C4.5 16.8 7.8 21.2 12 22.5C16.2 21.2 19.5 16.8 19.5 12V7L12 3.5Z" 
-                  fill="none" 
                   stroke="rgba(255,255,255,0.3)" 
-                  strokeWidth="1"
+                  strokeWidth="0.5"
                 />
-                
-                {/* Checkmark */}
                 <path 
                   d="M9 12L11 14L15 10" 
                   stroke="white" 
-                  strokeWidth="2.5" 
+                  strokeWidth="2" 
                   strokeLinecap="round" 
                   strokeLinejoin="round"
-                  filter="url(#shieldGlow)"
                 />
-                
-                {/* Security dots around shield */}
-                <circle cx="7" cy="9" r="1" fill="rgba(255,255,255,0.6)"/>
-                <circle cx="17" cy="9" r="1" fill="rgba(255,255,255,0.6)"/>
-                <circle cx="7" cy="15" r="1" fill="rgba(255,255,255,0.6)"/>
-                <circle cx="17" cy="15" r="1" fill="rgba(255,255,255,0.6)"/>
               </svg>
             </div>
             <h1>Connect Your Accounts</h1>
@@ -686,33 +661,34 @@ export default function GkpAuthClient() {
 
           <div className="step-container">
             {!showApifyStep ? (
-              // Step 1: Google Sign-In
+              // Step 1: Google Sign-In (Always show button immediately)
               <div>
-                {isLoading ? (
-                  <div className="loading-state">
-                    <div className="spinner"></div>
-                    <p style={{ color: '#64748b', fontWeight: '500', margin: 0 }}>Redirecting to Google...</p>
-                  </div>
-                ) : (
-                  <div style={{ textAlign: 'center' }}>
-                    <button
-                      onClick={initiateGoogleOAuth}
-                      className="google-btn"
-                    >
-                      {/* Enhanced Google Icon */}
-                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="white"/>
-                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="white"/>
-                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="white"/>
-                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="white"/>
-                      </svg>
-                      Sign in with Google
-                    </button>
-                    <p className="helper-text">
-                      Secure OAuth2 authentication for Keyword Planner access
-                    </p>
-                  </div>
-                )}
+                <div style={{ textAlign: 'center' }}>
+                  {isLoading ? (
+                    <div className="loading-state">
+                      <div className="spinner"></div>
+                      <p style={{ color: '#64748b', fontWeight: '500', margin: 0 }}>Redirecting to Google...</p>
+                    </div>
+                  ) : (
+                    <>
+                      <button
+                        onClick={initiateGoogleOAuth}
+                        className="google-btn"
+                      >
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="white"/>
+                          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="white"/>
+                          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="white"/>
+                          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="white"/>
+                        </svg>
+                        Sign in with Google
+                      </button>
+                      <p className="helper-text">
+                        Secure OAuth2 authentication for Keyword Planner access
+                      </p>
+                    </>
+                  )}
+                </div>
               </div>
             ) : (
               // Step 2: Apify Token Input
@@ -720,9 +696,8 @@ export default function GkpAuthClient() {
                 <div className="success-box">
                   <div className="success-indicator">
                     <div className="success-icon">
-                      {/* Professional checkmark icon */}
-                      <svg width="16" height="16" fill="white" viewBox="0 0 24 24">
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <svg width="14" height="14" fill="white" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
                       </svg>
                     </div>
                     <div>
@@ -735,9 +710,8 @@ export default function GkpAuthClient() {
 
                 <div className="form-group">
                   <label htmlFor="apifyToken" className="form-label">
-                    {/* API Key Icon */}
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <rect x="3" y="11" width="18" height="10" rx="2" ry="2"/>
                         <circle cx="12" cy="16" r="1"/>
                         <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
@@ -765,8 +739,8 @@ export default function GkpAuthClient() {
                   className={`primary-btn ${isLoading ? 'btn-loading' : ''}`}
                 >
                   {isLoading ? 'Connecting to GKP...' : (
-                    <span style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <span style={{ display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'center' }}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                       </svg>
                       Complete GKP Setup
@@ -788,8 +762,8 @@ export default function GkpAuthClient() {
           {/* Error Display */}
           {error && (
             <div className="error-box">
-              <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10"/>
                   <line x1="15" y1="9" x2="9" y2="15"/>
                   <line x1="9" y1="9" x2="15" y2="15"/>
